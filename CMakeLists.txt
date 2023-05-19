@@ -3,4 +3,4 @@ project(kontener_project3)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(kontener_project3 main.cpp)
+add_executable(kontener_project3 main.cpp Plane.cpp Plane.h)

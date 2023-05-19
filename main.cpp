@@ -1,12 +1,22 @@
 #include <iostream>
+#include "Plane.h"
 using namespace std;
+
+ostream& operator<<(ostream& coutj, Plane& s){
+    s.information();
+        return coutj;
+}
 
 template <typename T> class Kontener{
     T * arr = nullptr;
     size_t rozmiar = 0;
 public:
+/*    T operator[](int i) {
+        if (i >= arr && i > 0){ cout << "miejsce jest puste" << endl;}
+        return arr(i);
+    }*/
     auto push_back(T elem){
-        auto newArray = new T[rozmiar + 1];
+        auto newArray = new T[rozmiar + 1]; //bląd! No matching constructor for initialization of 'Plane[]'
         newArray[rozmiar] = elem;
         delete arr;
         arr = newArray;
@@ -16,8 +26,7 @@ public:
 
     auto print(){
         for(int i = 0; i < rozmiar; i++)
-            std::cout<<arr[i]<< " ";
-        std::cout<<'\n';
+            std::cout << arr[i] << " " << endl;
     }
 
     auto size(){
@@ -30,10 +39,17 @@ public:
     }
 };
 
+int Plane:: id = 0;
+
 int main() {
     Kontener<int> num;
     num.push_back(5);
     num.print();
+
+    Kontener<Plane> flying;
+    Plane litak("TYPE", "oan");
+    flying.push_back(litak);
+    flying.print();
 
     return 0;
 }
